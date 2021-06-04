@@ -32,5 +32,31 @@ public class MyRestController {
         return employee;
     }
 
+    @PostMapping("/employees")
+    public String saveEmployee(@RequestBody Employee employee){
+        employeeService.saveEmployee(employee);
+        return "success";
+    }
+
+    @PutMapping("/employees")
+    public String updateEmployee(@RequestBody Employee employee){
+        if (employee.getId()==0){
+            throw new NoSuchEmployee("Request body has not employee.id for update");
+        }
+        employeeService.saveEmployee(employee);
+        return "success";
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployee(@PathVariable int id){
+        Employee employeeForDelete = employeeService.getEmployee(id);
+        if (employeeForDelete==null){
+            throw new NoSuchEmployee("The employee with id "+id+" not found ");
+        }
+        employeeService.deleteEmployee(employeeForDelete);
+
+        return "success";
+    }
+
 
 }
