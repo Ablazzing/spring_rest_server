@@ -26,7 +26,7 @@ public class MyConfig {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         try {
             comboPooledDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-            comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&amp;serverTimezone=UTC");
+            comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=UTC");
             comboPooledDataSource.setUser("bestuser");
             comboPooledDataSource.setPassword("bestuser");
         } catch (PropertyVetoException e) {
@@ -39,7 +39,7 @@ public class MyConfig {
     public LocalSessionFactoryBean localSessionFactoryBean(){
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan("com.molodyko.mvc_plus_hibernate");
+        sessionFactoryBean.setPackagesToScan("com.molodyko.spring_rest");
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.show_sql","true");
